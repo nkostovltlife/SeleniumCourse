@@ -1,6 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.IO;
 
 namespace Task_70.Pages
 {
@@ -37,6 +39,15 @@ namespace Task_70.Pages
             element.Click();
             element.Clear();
             element.SendKeys(textToEnter);
+        }
+
+        public void TakeScreenshot()
+        {
+            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+
+            Screenshot screenshot = screenshotDriver.GetScreenshot();
+
+            screenshot.SaveAsFile(Path.GetFullPath(@"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\") + TestContext.CurrentContext.Test.Name + "_Screenshot" + ".png", ScreenshotImageFormat.Png);
         }
     }
 }

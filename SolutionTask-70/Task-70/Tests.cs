@@ -26,6 +26,7 @@ namespace Task_70
             LoginPage lp = new LoginPage(driver);
 
             mp.NavigateToYandexPage();
+            mp.TakeScreenshot();
             mp.OpenLoginLink.Click();
             lp.EnterText(lp.UsernameInputField, username);
             lp.LoginButtonClicAndWaitPasswordInputField();
