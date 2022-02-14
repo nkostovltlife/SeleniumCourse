@@ -41,13 +41,20 @@ namespace Task_70.Pages
             element.SendKeys(textToEnter);
         }
 
-        public void TakeScreenshot()
+        public void TakeScreenshot(string focus)
         {
-            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+            try
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
 
-            Screenshot screenshot = screenshotDriver.GetScreenshot();
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
 
-            screenshot.SaveAsFile(Path.GetFullPath(@"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\") + TestContext.CurrentContext.Test.Name + "_Screenshot" + ".png", ScreenshotImageFormat.Png);
+                screenshot.SaveAsFile(Path.GetFullPath(@"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\") + TestContext.CurrentContext.Test.Name + "_Screenshot_" + focus + ".png", ScreenshotImageFormat.Png);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
