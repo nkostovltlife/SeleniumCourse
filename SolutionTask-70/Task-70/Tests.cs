@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Task_70.Pages;
@@ -6,6 +9,7 @@ using Task_70.Pages;
 namespace Task_70
 {
     [TestFixture]
+    [AllureNUnit]
     public class Tests
     {
         IWebDriver driver;
@@ -24,11 +28,17 @@ namespace Task_70
         }
 
         [Test]
-        [Description("Verifies the user is able to login with correct credentials")]
+        [AllureSubSuite("Login Tests")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("1234")]
+        [AllureDescription("Verifies the user is able to login with correct credentials")]
+        [AllureLink("Yandex Page", "https://yandex.by/")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyUserLogin_CorrectCredentials()
         {
             mp.NavigateToYandexPage();
-            mp.OpenLoginLink.Click();
+            mp.LoginLinkClick();
             lp.EnterText(lp.UsernameInputField, username);
             lp.LoginButtonClicAndWaitPasswordInputField();
             lp.EnterText(lp.PasswordInputField, password);
@@ -39,11 +49,17 @@ namespace Task_70
         }
 
         [Test]
-        [Description("Verifies the user is able to logout")]
+        [AllureSubSuite("Logout Tests")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureTag("CI")]
+        [AllureIssue("1235")]
+        [AllureDescription("Verifies the user is able to logout")]
+        [AllureLink("Yandex Page", "https://yandex.by/")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyUserLogout()
         {
             mp.NavigateToYandexPage();
-            mp.OpenLoginLink.Click();
+            mp.LoginLinkClick();
             lp.EnterText(lp.UsernameInputField, username);
             lp.LoginButtonClicAndWaitPasswordInputField();
             lp.EnterText(lp.PasswordInputField, password);
@@ -52,7 +68,7 @@ namespace Task_70
             mp.LogoutButton.Click();
             mp.TakeScreenshot("UserLoggedOut");
 
-            Assert.IsTrue(mp.OpenLoginLink.Displayed);
+            Assert.IsTrue(mp.LoginLink.Displayed);
         }
 
         [TearDown]

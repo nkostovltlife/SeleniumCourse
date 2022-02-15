@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace Task_70.Pages
@@ -8,7 +9,7 @@ namespace Task_70.Pages
         private const string yandexURL = "https://yandex.ru/";
 
         [FindsBy(How = How.ClassName, Using = "desk-notif-card__login-new-item-title")]
-        public IWebElement OpenLoginLink;
+        public IWebElement LoginLink;
 
         [FindsBy(How = How.XPath, Using = "//span[@class = 'username desk-notif-card__user-name']")]
         public IWebElement LoggedUser;
@@ -22,9 +23,16 @@ namespace Task_70.Pages
             PageFactory.InitElements(driver, this);
         }
 
+        [AllureStep("Navigate to home page")]
         public void NavigateToYandexPage()
         {
             Driver.Navigate().GoToUrl(yandexURL);
+        }
+
+        [AllureStep("Click Login link")]
+        public void LoginLinkClick()
+        { 
+            LoginLink.Click();
         }
     }
 }

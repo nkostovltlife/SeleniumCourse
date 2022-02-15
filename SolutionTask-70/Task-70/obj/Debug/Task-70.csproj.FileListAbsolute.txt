@@ -27,3 +27,12 @@ C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\obj\Debug\
 C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\obj\Debug\Task-70.csproj.CopyComplete
 C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\obj\Debug\Task-70.dll
 C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\obj\Debug\Task-70.pdb
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\Task-70.dll.config
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\Allure.Commons.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\AspectInjector.Broker.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\MimeTypesMap.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\NUnit.Allure.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\NUnit.Allure.Steps.dll
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\AspectInjector.Broker.xml
+C:\Users\nikolaykostov\Courses\SeleniumCourse\SolutionTask-70\Task-70\bin\Debug\Newtonsoft.Json.xml

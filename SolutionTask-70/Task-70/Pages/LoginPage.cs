@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace Task_70.Pages
@@ -22,12 +23,14 @@ namespace Task_70.Pages
             PageFactory.InitElements(driver, this);
         }
 
+        [AllureStep("Click LoginButton and wait Password Input Field")]
         public void LoginButtonClicAndWaitPasswordInputField()
         {
             LoginButton.Click();
             Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(passwordInputFieldLocator));
         }
 
+        [AllureStep("Click LoginButton and wait Main Page")]
         public void LoginButtonClickAndWaitMainPageLoaded()
         {
             LoginButton.Click();

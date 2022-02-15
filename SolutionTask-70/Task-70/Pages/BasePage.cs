@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -34,6 +35,7 @@ namespace Task_70.Pages
             }
         }
 
+        [AllureStep("Add text")]
         public void EnterText(IWebElement element, string textToEnter)
         {
             element.Click();
