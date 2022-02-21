@@ -4,6 +4,8 @@ using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+using System;
 using Task_70.Pages;
 
 namespace Task_70
@@ -15,6 +17,7 @@ namespace Task_70
         IWebDriver driver;
         private const string username = "nikolaykkostov";
         private const string password = "Selenium";
+        private string url;
 
         MainPageYandex mp;
         LoginPage lp;
@@ -22,7 +25,15 @@ namespace Task_70
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            //url = "http://localhost:4444/wd/hub";
+            //DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            //desiredCapabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            //driver = new RemoteWebDriver(new Uri(url), desiredCapabilities);
+            
+            url = "http://localhost:4444/wd/hub";
+            var chromeOption = new ChromeOptions();
+            driver = new RemoteWebDriver(new Uri(url), chromeOption);
+
             mp = new MainPageYandex(driver);
             lp = new LoginPage(driver);
         }
@@ -74,11 +85,11 @@ namespace Task_70
         [TearDown]
         public void TearDown()
         {
-            if(TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
-            {
-                mp.TakeScreenshot("TestFailed");              
-            }
-            driver.Quit();
+            //if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
+            //{
+            //    mp.TakeScreenshot("TestFailed");
+            //}
+            //driver.Quit();
         }
     }
 }
