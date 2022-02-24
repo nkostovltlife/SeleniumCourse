@@ -19,21 +19,13 @@ namespace Task50_9
 
         List<Employee> data = new List<Employee>();
 
-        IWebDriver driver;
-
         public Task50_9Page(IWebDriver driver)
         {
-            this.driver = driver;
-            this.driver.Manage().Window.Maximize();
+            Driver = driver;
+            Driver.Manage().Window.Maximize();
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
         public void NavigateToTask50_9Page()
         {

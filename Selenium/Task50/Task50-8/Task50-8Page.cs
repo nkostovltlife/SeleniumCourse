@@ -11,31 +11,16 @@ namespace Task50_8
 
         private const string url = "https://demo.seleniumeasy.com/bootstrap-download-progress-demo.html";
 
-        IWebDriver driver;
-        private WebDriverWait wait;
-
         public Task50_8Page(IWebDriver driver)
         {
-            this.driver = driver;
-            this.driver.Manage().Window.Maximize();
-            this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(15));
+            Driver = driver;
+            Driver.Manage().Window.Maximize();
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
-        public WebDriverWait Wait
-        {
-            get
-            {
-                return this.wait;
-            }
-        }
+        public WebDriverWait Wait { get; }
 
         public void NavigateToTask50_8Page()
         {
@@ -46,7 +31,7 @@ namespace Task50_8
 
         public void ReloadPage()
         {
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(progressBarDeadLineLocator));
+            Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(progressBarDeadLineLocator));
             Driver.Navigate().Refresh();
         }
     }

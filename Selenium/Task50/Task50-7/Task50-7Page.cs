@@ -11,31 +11,16 @@ namespace Task50_7
 
         private const string url = "https://demo.seleniumeasy.com/dynamic-data-loading-demo.html";
 
-        IWebDriver driver;
-        private WebDriverWait wait;
-
         public Task50_7Page(IWebDriver driver)
         {
-            this.driver = driver;
-            this.driver.Manage().Window.Maximize();
-            this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+            Driver = driver;
+            Driver.Manage().Window.Maximize();
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
-        public WebDriverWait Wait
-        {
-            get
-            {
-                return this.wait;
-            }
-        }
+        public WebDriverWait Wait { get; }
 
         public void NavigateToTask50_7Page()
         {
@@ -46,7 +31,7 @@ namespace Task50_7
 
         public bool IsUserImageDisplayed()
         {
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(userImageLocator));
+            Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(userImageLocator));
             return Driver.FindElement(userImageLocator).Displayed;
         }
     }

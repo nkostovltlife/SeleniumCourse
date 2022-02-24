@@ -27,7 +27,7 @@ namespace Task50_6
             tp.jSAlertBoxButton.Click();
             driver.SwitchTo().Alert().Accept();
 
-            Assert.AreEqual(true, tp.IsAlertClosed(driver));
+            Assert.IsTrue(tp.IsAlertClosed(driver));
         }
 
         [Test]

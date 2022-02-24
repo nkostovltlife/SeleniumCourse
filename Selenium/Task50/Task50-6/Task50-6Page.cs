@@ -14,21 +14,13 @@ namespace Task50_6
 
         private const string url = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
 
-        IWebDriver driver;
-
         public Task50_6Page(IWebDriver driver)
         {
-            this.driver = driver;
-            this.driver.Manage().Window.Maximize();
+            Driver = driver;
+            Driver.Manage().Window.Maximize();
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
         public void NavigateToTask50_6Page()
         {

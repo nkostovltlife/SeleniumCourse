@@ -7,7 +7,7 @@ namespace Task50_8
     [TestFixture]
     public class TestTask50_8
     {
-        IWebDriver driver;
+        private IWebDriver driver;
 
         [SetUp]
         public void Setup()

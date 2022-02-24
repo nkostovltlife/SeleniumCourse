@@ -10,7 +10,7 @@ namespace LoginYandexMail
     [TestFixture]
     public class Tests
     {
-        IWebDriver driver;
+        private IWebDriver driver;
 
         [SetUp]
         public void Setup()
@@ -37,7 +37,7 @@ namespace LoginYandexMail
             lp.EnterText(lp.passwordInputField, password);
             lp.LoginButtonClickAndWaitMailInboxPageLoaded();
 
-            Assert.AreEqual(username, mip.LoggedUser.Text);
+            Assert.AreEqual(username, mip.LoggedUser.Text, "The user was not able to login");
         }
 
         [TearDown]

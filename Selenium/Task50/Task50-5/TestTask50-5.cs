@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Threading;
 
 namespace Task50_5
 {
@@ -14,7 +11,7 @@ namespace Task50_5
         private string option4 = "New York";
         private string option5 = "Ohio";
 
-        IWebDriver driver;
+        private IWebDriver driver;
 
         [SetUp]
         public void Setup()
@@ -31,9 +28,7 @@ namespace Task50_5
             tp.NavigateToTask50_5Page();
             tp.Select3Options(option1, option4, option5);
 
-            Assert.IsTrue(tp.option1.Selected);
-            Assert.IsTrue(tp.option4.Selected);
-            Assert.IsTrue(tp.option5.Selected);
+            Assert.AreEqual(3, tp.Select.AllSelectedOptions.Count);
         }
 
         [TearDown]

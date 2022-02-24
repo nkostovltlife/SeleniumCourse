@@ -1,16 +1,13 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Threading;
 
 namespace Task50_7
 {
     [TestFixture]
     public class TestTask50_7
     {
-        IWebDriver driver;
+        private IWebDriver driver;
 
         [SetUp]
         public void Setup()
@@ -27,7 +24,7 @@ namespace Task50_7
             tp.NavigateToTask50_7Page();
             tp.getNewUserButton.Click();
 
-            Assert.IsTrue(tp.IsUserImageDisplayed());
+            Assert.IsTrue(tp.IsUserImageDisplayed(), "The user image is not displayed");
         }
 
         [TearDown]
