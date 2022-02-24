@@ -8,7 +8,7 @@ namespace YandexLogin
     [TestFixture]
     public class Tests
     {
-        IWebDriver driver;
+        private IWebDriver driver;
         private const string username = "nikolaykkostov";
         private const string password = "Selenium";
 
@@ -32,7 +32,7 @@ namespace YandexLogin
             lp.EnterText(lp.passwordInputField, password);
             lp.LoginButtonClickAndWaitMainPageLoaded();
 
-            Assert.AreEqual(username, mp.loggedUser.Text);
+            Assert.AreEqual(username, mp.loggedUser.Text,"The user is not logged in.");
         }
 
         [TearDown]

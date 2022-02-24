@@ -6,31 +6,16 @@ namespace YandexLogin.Pages
 {
     public class BasePage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
-
         public BasePage(IWebDriver driver)
         {
-            this.driver = driver;
-            this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-            this.driver.Manage().Window.Maximize();
+            Driver = driver;
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            Driver.Manage().Window.Maximize();
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
-        public WebDriverWait Wait
-        {
-            get
-            {
-                return this.wait;
-            }
-        }
+        public WebDriverWait Wait { get; }
 
         public void EnterText(IWebElement element, string textToEnter)
         {
