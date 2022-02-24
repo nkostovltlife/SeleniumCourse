@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Selenium/.vs/Selenium
+/Selenium/YandexLogin/bin/Debug/netcoreapp3.1
+/Selenium/YandexLogin/obj
