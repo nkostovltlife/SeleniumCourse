@@ -2,40 +2,20 @@
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using System;
-using Task_70.Pages;
 
 namespace Task_70
 {
-    [TestFixture]
+    [TestFixture("chrome", "latest", "macOS 11")]
+    [TestFixture("firefox", "91.0", "Windows 10")]
+    [TestFixture("MicrosoftEdge", "latest", "Windows 10")]
     [AllureNUnit]
-    public class Tests
+    public class Tests : BaseTests
     {
-        IWebDriver driver;
         private const string username = "nikolaykkostov";
         private const string password = "Selenium";
-        private string url;
 
-        MainPageYandex mp;
-        LoginPage lp;
-
-        [SetUp]
-        public void Setup()
+        public Tests(string browser, string version, string os) :base(browser, version, os)
         {
-            //url = "http://localhost:4444/wd/hub";
-            //DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-            //desiredCapabilities.SetCapability(CapabilityType.BrowserName, "chrome");
-            //driver = new RemoteWebDriver(new Uri(url), desiredCapabilities);
-            
-            url = "http://localhost:4444/wd/hub";
-            var chromeOption = new ChromeOptions();
-            driver = new RemoteWebDriver(new Uri(url), chromeOption);
-
-            mp = new MainPageYandex(driver);
-            lp = new LoginPage(driver);
         }
 
         [Test]
@@ -55,6 +35,7 @@ namespace Task_70
             lp.EnterText(lp.PasswordInputField, password);
             lp.LoginButtonClickAndWaitMainPageLoaded();
             mp.TakeScreenshot("UserLoggedIn");
+
 
             Assert.AreEqual(username, mp.LoggedUser.Text);
         }
@@ -80,16 +61,6 @@ namespace Task_70
             mp.TakeScreenshot("UserLoggedOut");
 
             Assert.IsTrue(mp.LoginLink.Displayed);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            //if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
-            //{
-            //    mp.TakeScreenshot("TestFailed");
-            //}
-            //driver.Quit();
         }
     }
 }
