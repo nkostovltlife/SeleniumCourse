@@ -9,31 +9,16 @@ namespace Task_70.Pages
 {
     public class BasePage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
-
         public BasePage(IWebDriver driver)
         {
-            this.driver = driver;
-            this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-            this.driver.Manage().Window.Maximize();
+            this.Driver = driver;
+            this.Wait = new WebDriverWait(this.Driver, TimeSpan.FromSeconds(10));
+            this.Driver.Manage().Window.Maximize();     
         }
 
-        public IWebDriver Driver
-        {
-            get
-            {
-                return this.driver;
-            }
-        }
+        public IWebDriver Driver { get; }
 
-        public WebDriverWait Wait
-        {
-            get
-            {
-                return this.wait;
-            }
-        }
+        public WebDriverWait Wait { get; }
 
         [AllureStep("Add text")]
         public void EnterText(IWebElement element, string textToEnter)
@@ -47,11 +32,14 @@ namespace Task_70.Pages
         {
             try
             {
-                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
-
+                
+                ITakesScreenshot screenshotDriver = Driver as ITakesScreenshot;
+                
                 Screenshot screenshot = screenshotDriver.GetScreenshot();
+                var fileName = TestContext.CurrentContext.Test.Name + "_Screenshot_" + focus + ".png";
+                var fileLocation = Path.Combine(Environment.CurrentDirectory, fileName);
 
-                screenshot.SaveAsFile(Path.GetFullPath(@"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\") + TestContext.CurrentContext.Test.Name + "_Screenshot_" + focus + ".png", ScreenshotImageFormat.Png);
+                screenshot.SaveAsFile(fileLocation, ScreenshotImageFormat.Png);
             }
             catch (Exception e)
             {
