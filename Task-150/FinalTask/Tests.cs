@@ -1,4 +1,7 @@
-﻿using FinalTask.Pages;
+﻿using Allure.Commons;
+using FinalTask.Pages;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -7,7 +10,8 @@ using System.Threading;
 namespace FinalTask
 {
     [TestFixture]
-    public class Tests 
+    [AllureNUnit]
+    public class Tests : BaseTestsPage
     {
         private const string expectedMyAccountPageTitle  = "My account - My Store";
         private const string accountNotCreatedErrorMessage = "The account is not created";
@@ -17,33 +21,18 @@ namespace FinalTask
         private const string secondProductPrice = "27.00";
         private const string thirdProductPrice = "26.00";
 
-        IWebDriver driver;
-        private AuthenticationPage ap;
-        private CreateAccountPage ca;
-        private MyAccountPage ma;
-        private MyWishlistsPage mw;
-        private ProductPage pp;
-        private CategoryPage cp;
-
-        [SetUp]
-        public void Setup()
+        public Tests()
         {
-            driver = new ChromeDriver();
-            ap = new AuthenticationPage(driver);
-            ca = new CreateAccountPage(driver);
-            ma = new MyAccountPage(driver);
-            mw = new MyWishlistsPage(driver);
-            pp = new ProductPage(driver);
-            cp = new CategoryPage(driver);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
+            
         }
 
         [Test]
+        [AllureSubSuite("Authentication")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("0001")]
+        [AllureDescription("Verifies the account creation")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyAccountCreated()
         {
             ap.NavigateToAuthenticationPage();
@@ -52,19 +41,31 @@ namespace FinalTask
             ca.FillRegistrationForm();
             ca.ClickRegisterButton();
             
-            Assert.AreEqual(expectedMyAccountPageTitle, driver.Title, accountNotCreatedErrorMessage);
+            Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title, accountNotCreatedErrorMessage);
         }
 
         [Test]
+        [AllureSubSuite("Authentication")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("0002")]
+        [AllureDescription("Verifies the login is successfull")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyAccountLoginSuccessful()
         {
             ap.NavigateToAuthenticationPage();
             ap.LoginWithTestAccount();
 
-            Assert.AreEqual(expectedMyAccountPageTitle, driver.Title);
+           Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title);
         }
 
         [Test]
+        [AllureSubSuite("Wishlist")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("0003")]
+        [AllureDescription("Verifies the product is successfully added in autocreated wishlist")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyProductAddedInAutoCreatedWishlist()
         {
             ap.NavigateToAuthenticationPage();
@@ -84,6 +85,12 @@ namespace FinalTask
         }
 
         [Test]
+        [AllureSubSuite("Wishlist")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("0004")]
+        [AllureDescription("Verifies the product is successfully added in manually created wishlist")]
+        [AllureOwner("Nikolay Kostov")]
         public void VerifyProductAddedInManuallyCreatedWishlist()
         {
             ap.NavigateToAuthenticationPage();
@@ -103,6 +110,12 @@ namespace FinalTask
         }
 
         [Test]
+        [AllureSubSuite("Cart")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Regression")]
+        [AllureIssue("0005")]
+        [AllureDescription("Verifies 3 products are successfully added in the Cart")]
+        [AllureOwner("Nikolay Kostov")]
         public void Verify3ProductsAddedInCart()
         {
             ap.NavigateToAuthenticationPage();

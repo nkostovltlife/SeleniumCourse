@@ -9,8 +9,6 @@ namespace FinalTask.Pages
 {
     public class BasePage
     {
-        IWebDriver driver;
-        WebDriverWait wait;
         public BasePage(IWebDriver driver)
         {
             Driver = driver;

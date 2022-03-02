@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTestsPage.cs" />
     <Compile Include="Pages\AuthenticationPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\CategoryPage.cs" />

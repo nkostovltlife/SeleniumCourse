@@ -2,6 +2,7 @@
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace FinalTask.Pages
 {
@@ -43,7 +44,7 @@ namespace FinalTask.Pages
                 {
                     Product.FindElement(addCartButtonBy).Click();
                     Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(continueShoppingButtonBy));
-                    ContinueShoppingButton.Click();
+                    ContinueShoppingButton.Click(); Thread.Sleep(2000);
                 }
                 if (counter == 3)
                 {
