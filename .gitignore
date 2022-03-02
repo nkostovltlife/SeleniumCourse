@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Task-150/packages
+/.vs
+/Selenium/Task50/.vs/Task50/v16
+/Task-150/.vs/Task-150/v16
+/Task-150/FinalTask/obj/Debug
+/Task-150/FinalTask/bin/Debug
