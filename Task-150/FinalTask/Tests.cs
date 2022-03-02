@@ -46,7 +46,7 @@ namespace FinalTask
         [Test]
         public void VerifyAccountCreated()
         {
-            ap.NavigateToAuthenticationPage();Thread.Sleep(3000);
+            ap.NavigateToAuthenticationPage();
             ap.EnterText(ap.CreateAccountEmailInput, ap.GenerateRandomEmail(8));
             ap.ClickCreateAccountButton();
             ca.FillRegistrationForm();

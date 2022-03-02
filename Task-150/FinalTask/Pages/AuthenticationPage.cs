@@ -6,7 +6,7 @@ namespace FinalTask.Pages
     public class AuthenticationPage : BasePage
     {
         private By mrbuttonBy = By.Id("id_gender1");
-        private const string url = "//http://automationpractice.com/index.php?controller=authentication&back=my-account";
+        private const string url = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
         private string signInEmail = "aaa@scx.com";
         private string signInPassword = "Welcome1";
 

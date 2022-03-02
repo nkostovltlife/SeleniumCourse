@@ -9,12 +9,13 @@ namespace FinalTask.Pages
 {
     public class BasePage
     {
-        AuthenticationPage ap;
+        IWebDriver driver;
+        WebDriverWait wait;
         public BasePage(IWebDriver driver)
         {
             Driver = driver;
-            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             Driver.Manage().Window.Maximize();
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
         }
 
         public IWebDriver Driver { get; }
