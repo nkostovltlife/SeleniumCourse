@@ -38,13 +38,12 @@ namespace FinalTask.Pages
             foreach (IWebElement Product in AllProducts)
             {
                 Product.Click();
-                
-                string tmp = Product.FindElement(productPriceBy).Text.Substring(1);
-                if (tmp.Equals(firstProductPrice) || tmp.Equals(secondProductPrice) || tmp.Equals(thirdProductPrice))
+                string tmp = Product.Text;
+                if (tmp.Contains(firstProductPrice) || tmp.Contains(secondProductPrice) || tmp.Contains(thirdProductPrice))
                 {
                     Product.FindElement(addCartButtonBy).Click();
                     Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(continueShoppingButtonBy));
-                    ContinueShoppingButton.Click(); Thread.Sleep(2000);
+                    ContinueShoppingButton.Click();Thread.Sleep(2000);
                 }
                 if (counter == 3)
                 {

@@ -1,5 +1,4 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -34,6 +33,8 @@ namespace FinalTask.Pages
         [FindsBy(How = How.CssSelector, Using = ".wishlist_delete > a")]
         public IWebElement WishlistDeleteButton;
 
+        [FindsBy(How = How.CssSelector, Using = ".logout")]
+        public IWebElement SignOutButton;
 
         public MyWishlistsPage(IWebDriver driver) : base(driver)
         {
@@ -100,6 +101,12 @@ namespace FinalTask.Pages
         {
             WishlistDeleteButton.Click();
             Driver.SwitchTo().Alert().Accept();
+        }
+
+        public void ClickSignOutButton()
+        {
+            SignOutButton.Click();
+            Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("email")));
         }
     }
 }
