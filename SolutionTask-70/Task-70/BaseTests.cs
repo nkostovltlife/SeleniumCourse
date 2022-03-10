@@ -34,7 +34,6 @@ namespace Task_70
         [SetUp]
         public void Setup()
         {
-            Environment.CurrentDirectory = @"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\";
             browserOptions = GetDriverOptions(browser);
             browserOptions.BrowserVersion = version;
             browserOptions.PlatformName = os;

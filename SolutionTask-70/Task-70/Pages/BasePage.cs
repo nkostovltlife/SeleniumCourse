@@ -31,14 +31,14 @@ namespace Task_70.Pages
         public void TakeScreenshot(string focus)
         {
             try
-            {
-                
-                ITakesScreenshot screenshotDriver = Driver as ITakesScreenshot;
-                
+            {               
+                ITakesScreenshot screenshotDriver = Driver as ITakesScreenshot;       
                 Screenshot screenshot = screenshotDriver.GetScreenshot();
-                var fileName = TestContext.CurrentContext.Test.Name + "_Screenshot_" + focus + ".png";
-                var fileLocation = Path.Combine(Environment.CurrentDirectory, fileName);
 
+                string screenshotDirectory = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\Courses\SeleniumCourse\SolutionTask-70\Task-70\Screenshots\"));
+                var fileName = TestContext.CurrentContext.Test.Name + "_Screenshot_" + focus + "_" + DateTime.Now.ToString("HH-mm-ss") + ".png";              
+                var fileLocation = Path.Combine(screenshotDirectory, fileName);
+                
                 screenshot.SaveAsFile(fileLocation, ScreenshotImageFormat.Png);
             }
             catch (Exception e)
