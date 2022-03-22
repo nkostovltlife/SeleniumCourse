@@ -28,21 +28,21 @@ namespace FinalTask
         [AllureOwner("Nikolay Kostov")]
         public void VerifyProductAddedInAutoCreatedWishlist()
         {
-            ap.NavigateToAuthenticationPage();
-            ap.LoginWithTestAccount();
-            ma.ClickMyWishlistLink();
-            Assert.IsFalse(mw.isWishlistTablePresent());
-            mw.SelectProductByName(printedChiffonDress);
-            pp.AddProductToWishlist();
-            pp.OpenMyCustomerAccount();
-            ma.ClickMyWishlistLink();
-            mw.ClickViewMyWishlistLink();
+            authenticationPage.NavigateToAuthenticationPage();
+            authenticationPage.LoginWithTestAccount();
+            myAccountPage.ClickMyWishlistLink();
+            Assert.IsFalse(myWishlistsPage.IsWishlistTablePresent());
+            myWishlistsPage.SelectProductByName(printedChiffonDress);
+            productPage.AddProductToWishlist();
+            productPage.OpenMyCustomerAccount();
+            myAccountPage.ClickMyWishlistLink();
+            myWishlistsPage.ClickViewMyWishlistLink();
 
-            Assert.AreEqual(1, mw.MyWishlistsProducts.Count);
-            Assert.IsTrue(mw.IsProductInMyWishlists(printedChiffonDress));
+            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count);
+            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(printedChiffonDress));
 
-            mw.DeleteWishlist();
-            mw.ClickSignOutButton();
+            myWishlistsPage.DeleteWishlist();
+            myWishlistsPage.ClickSignOutButton();
         }
 
         [Test]
@@ -54,21 +54,21 @@ namespace FinalTask
         [AllureOwner("Nikolay Kostov")]
         public void VerifyProductAddedInManuallyCreatedWishlist()
         {
-            ap.NavigateToAuthenticationPage();
-            ap.LoginWithTestAccount();
-            ma.ClickMyWishlistLink();
-            mw.CreateWishlistManually();
-            mw.SelectProductByName(fadedShortSleeveTshirts);
-            pp.AddProductToWishlist();
-            pp.OpenMyCustomerAccount();
-            ma.ClickMyWishlistLink();
-            mw.ClickViewMyWishlistLink();
+            authenticationPage.NavigateToAuthenticationPage();
+            authenticationPage.LoginWithTestAccount();
+            myAccountPage.ClickMyWishlistLink();
+            myWishlistsPage.CreateWishlistManually();
+            myWishlistsPage.SelectProductByName(fadedShortSleeveTshirts);
+            productPage.AddProductToWishlist();
+            productPage.OpenMyCustomerAccount();
+            myAccountPage.ClickMyWishlistLink();
+            myWishlistsPage.ClickViewMyWishlistLink();
 
-            Assert.AreEqual(1, mw.MyWishlistsProducts.Count);
-            Assert.IsTrue(mw.IsProductInMyWishlists(fadedShortSleeveTshirts));
+            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count);
+            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(fadedShortSleeveTshirts));
 
-            mw.DeleteWishlist();
-            mw.ClickSignOutButton();
+            myWishlistsPage.DeleteWishlist();
+            myWishlistsPage.ClickSignOutButton();
         }
     }
 }

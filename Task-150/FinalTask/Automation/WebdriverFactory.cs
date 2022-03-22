@@ -9,6 +9,7 @@ namespace FinalTask.Automation
     public class WebdriverFactory
     {
         DriverOptions browserOptions;
+
         private DriverOptions GetDriverOptions(BrowserType browser)
         {
             switch (browser)

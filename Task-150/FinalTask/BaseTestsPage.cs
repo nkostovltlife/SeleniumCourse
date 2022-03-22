@@ -11,12 +11,12 @@ namespace FinalTask
     [TestFixture]
     public class BaseTestsPage
     {
-        protected AuthenticationPage ap;
-        protected CreateAccountPage ca;
-        protected MyAccountPage ma;
-        protected MyWishlistsPage mw;
-        protected ProductPage pp;
-        protected CategoryPage cp;
+        protected AuthenticationPage authenticationPage;
+        protected CreateAccountPage createAccountPage;
+        protected MyAccountPage myAccountPage;
+        protected MyWishlistsPage myWishlistsPage;
+        protected ProductPage productPage;
+        protected CategoryPage categoryPage;
         protected BrowserType browser;
         protected string version;
         protected string os;
@@ -35,20 +35,20 @@ namespace FinalTask
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            Driver = webDriverFactory.CreateSauceLabsDriver(browser, version, os);
+            //Driver = webDriverFactory.CreateSauceLabsDriver(browser, version, os);
             //Driver = webDriverFactory.CreateSeleniumGridDriver(browser);
-            //Driver = webDriverFactory.CreateLocalDriver(browser);
+            Driver = webDriverFactory.CreateLocalDriver(browser);
         }
 
         [SetUp]
         public void Setup()
         {
-            ap = new AuthenticationPage(Driver);
-            ca = new CreateAccountPage(Driver);
-            ma = new MyAccountPage(Driver);
-            mw = new MyWishlistsPage(Driver);
-            pp = new ProductPage(Driver);
-            cp = new CategoryPage(Driver);
+            authenticationPage = new AuthenticationPage(Driver);
+            createAccountPage = new CreateAccountPage(Driver);
+            myAccountPage = new MyAccountPage(Driver);
+            myWishlistsPage = new MyWishlistsPage(Driver);
+            productPage = new ProductPage(Driver);
+            categoryPage = new CategoryPage(Driver);
         }
 
         [TearDown]

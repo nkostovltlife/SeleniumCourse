@@ -28,14 +28,14 @@ namespace FinalTask
         [AllureOwner("Nikolay Kostov")]
         public void VerifyAccountCreated()
         {
-            ap.NavigateToAuthenticationPage();
-            ap.EnterText(ap.CreateAccountEmailInput, ap.GenerateRandomEmail(8));
-            ap.ClickCreateAccountButton();
-            ca.FillRegistrationForm();
-            ca.ClickRegisterButton();
+            authenticationPage.NavigateToAuthenticationPage();
+            authenticationPage.EnterText(authenticationPage.CreateAccountEmailInput, authenticationPage.GenerateRandomEmail(8));
+            authenticationPage.ClickCreateAccountButton();
+            createAccountPage.FillRegistrationForm();
+            createAccountPage.ClickRegisterButton();
 
             Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title, accountNotCreatedErrorMessage);
-            mw.ClickSignOutButton();
+            myWishlistsPage.ClickSignOutButton();
         }
 
         [Test]
@@ -47,11 +47,11 @@ namespace FinalTask
         [AllureOwner("Nikolay Kostov")]
         public void VerifyAccountLoginSuccessful()
         {
-            ap.NavigateToAuthenticationPage();
-            ap.LoginWithTestAccount();
+            authenticationPage.NavigateToAuthenticationPage();
+            authenticationPage.LoginWithTestAccount();
 
             Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title);
-            mw.ClickSignOutButton();
+            myWishlistsPage.ClickSignOutButton();
         }
     }
 }

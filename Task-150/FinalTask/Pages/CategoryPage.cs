@@ -10,7 +10,6 @@ namespace FinalTask.Pages
     {
         private By continueShoppingButtonBy = By.CssSelector("span[title = 'Continue shopping']");
         private By addCartButtonBy = By.XPath(".//a[@title = 'Add to cart']");
-        private By productPriceBy = By.XPath(".//span[@itemprop = 'price']");
 
         [FindsBy(How = How.CssSelector, Using = "ul .product-container")]
         public IList<IWebElement> AllProducts;

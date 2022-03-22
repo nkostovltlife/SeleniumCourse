@@ -9,7 +9,6 @@ namespace FinalTask.Pages
     {
         private const string wishlistName = "Manual Wishlist";
 
-        private By myWishlistTableBy = By.Id("block-history");
         private By myWishlistsProductsBlockBy = By.XPath("//div[@id='block-order-detail' and @style = 'display: block;']");
 
         [FindsBy(How = How.XPath, Using = "//div[@id = 'best-sellers_block_right'] //a[@class = 'product-name']")]
@@ -41,12 +40,11 @@ namespace FinalTask.Pages
             PageFactory.InitElements(driver, this);
         }
 
-        public bool isWishlistTablePresent()
+        public bool IsWishlistTablePresent()
         {
             try
             {
-                Driver.FindElement(myWishlistTableBy);
-                return true;
+                return MyWishlistTable.Displayed;
             }
             catch (NoSuchElementException e)
             {

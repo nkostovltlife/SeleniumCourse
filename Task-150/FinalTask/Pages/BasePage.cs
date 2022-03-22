@@ -25,7 +25,7 @@ namespace FinalTask.Pages
             element.SendKeys(textToEnter);
         }
 
-        private static Random random = new Random();
+        protected static Random random = new Random();
 
         public string GenerateRandomEmail(int length)
         {

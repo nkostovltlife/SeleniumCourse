@@ -20,13 +20,7 @@ namespace FinalTask.Pages
         private const string mobilePhone = "(555) 555-1234";
         private const string addressAlias = "Alias";
 
-        private By dayBy = By.Id("days");
-        private By monthBy = By.Id("months");
-        private By yearBy = By.Id("years");
-        private By stateBy = By.Id("id_state");
-        private By countryBy = By.Id("id_country");
         private By myWishlistBy = By.CssSelector("a[title='My wishlists']");
-
 
         [FindsBy(How = How.Id, Using = "id_gender1")]
         public IWebElement MrRadioButton;
@@ -40,9 +34,14 @@ namespace FinalTask.Pages
         [FindsBy(How = How.Id, Using = "passwd")]
         public IWebElement Password;
 
-        public SelectElement Day => new SelectElement(Driver.FindElement(dayBy));
-        public SelectElement Month => new SelectElement(Driver.FindElement(monthBy));
-        public SelectElement Year => new SelectElement(Driver.FindElement(yearBy));
+        [FindsBy(How = How.Id, Using = "days")]
+        public IWebElement DayElement;
+
+        [FindsBy(How = How.Id, Using = "months")]
+        public IWebElement MonthElement;
+
+        [FindsBy(How = How.Id, Using = "years")]
+        public IWebElement YearElement;
 
         [FindsBy(How = How.Id, Using = "optin")]
         public IWebElement SpecialOffersCheckBox;
@@ -62,12 +61,14 @@ namespace FinalTask.Pages
         [FindsBy(How = How.Id, Using = "city")]
         public IWebElement City;
 
-        public SelectElement State => new SelectElement(Driver.FindElement(stateBy));
+        [FindsBy(How = How.Id, Using = "id_state")]
+        public IWebElement StateElement;
 
         [FindsBy(How = How.Id, Using = "postcode")]
         public IWebElement Postcode;
 
-        public SelectElement Country => new SelectElement(Driver.FindElement(countryBy));
+        [FindsBy(How = How.Id, Using = "id_country")]
+        public IWebElement CountryElement;
 
         [FindsBy(How = How.Id, Using = "phone_mobile")]
         public IWebElement MobilePhone;
@@ -77,6 +78,12 @@ namespace FinalTask.Pages
 
         [FindsBy(How = How.Id, Using = "submitAccount")]
         public IWebElement RegisterButton;
+
+        public SelectElement Day => new SelectElement(DayElement);
+        public SelectElement Month => new SelectElement(MonthElement);
+        public SelectElement Year => new SelectElement(YearElement);
+        public SelectElement State => new SelectElement(StateElement);
+        public SelectElement Country => new SelectElement(CountryElement);
 
         public CreateAccountPage(IWebDriver driver) : base(driver)
         {

@@ -29,14 +29,14 @@ namespace FinalTask
         [AllureOwner("Nikolay Kostov")]
         public void Verify3ProductsAddedInCart()
         {
-            ap.NavigateToAuthenticationPage();
-            ap.LoginWithTestAccount();
-            ma.ClickWomanCategoryButton();
-            cp.Add3ProductsInCart(firstProductPrice, secondProductPrice, thirdProductPrice);
+            authenticationPage.NavigateToAuthenticationPage();
+            authenticationPage.LoginWithTestAccount();
+            myAccountPage.ClickWomanCategoryButton();
+            categoryPage.Add3ProductsInCart(firstProductPrice, secondProductPrice, thirdProductPrice);
 
-            Assert.AreEqual(3, cp.GetCartQuantity());
-            Assert.IsTrue(cp.IsCartContains3AddedProducts(firstProductPrice, secondProductPrice, thirdProductPrice));
-            Assert.IsTrue(cp.IsTotalCorrect(firstProductPrice, secondProductPrice, thirdProductPrice));
+            Assert.AreEqual(3, categoryPage.GetCartQuantity(), "Cart Quantity has wrong value");
+            Assert.IsTrue(categoryPage.IsCartContains3AddedProducts(firstProductPrice, secondProductPrice, thirdProductPrice));
+            Assert.IsTrue(categoryPage.IsTotalCorrect(firstProductPrice, secondProductPrice, thirdProductPrice));
         }
     }
 }
