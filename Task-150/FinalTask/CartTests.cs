@@ -14,6 +14,9 @@ namespace FinalTask
         private const string firstProductPrice = "16.51";
         private const string secondProductPrice = "27.00";
         private const string thirdProductPrice = "26.00";
+        private const string cartQuantityWrongValueErrorMessage = "Cart Quantity has wrong value";
+        private const string productsNotFoundErrorMessage = "The cart doesn't contain the 3 added products";
+        private const string totalNotCorrectErrorMessage = "The Total is not correct";
 
         public CartTests(BrowserType browser, string version, string os) : base(browser, version, os)
         {
@@ -34,9 +37,9 @@ namespace FinalTask
             myAccountPage.ClickWomanCategoryButton();
             categoryPage.Add3ProductsInCart(firstProductPrice, secondProductPrice, thirdProductPrice);
 
-            Assert.AreEqual(3, categoryPage.GetCartQuantity(), "Cart Quantity has wrong value");
-            Assert.IsTrue(categoryPage.IsCartContains3AddedProducts(firstProductPrice, secondProductPrice, thirdProductPrice));
-            Assert.IsTrue(categoryPage.IsTotalCorrect(firstProductPrice, secondProductPrice, thirdProductPrice));
+            Assert.AreEqual(3, categoryPage.GetCartQuantity(), cartQuantityWrongValueErrorMessage);
+            Assert.IsTrue(categoryPage.IsCartContains3AddedProducts(firstProductPrice, secondProductPrice, thirdProductPrice), productsNotFoundErrorMessage);
+            Assert.IsTrue(categoryPage.IsTotalCorrect(firstProductPrice, secondProductPrice, thirdProductPrice), totalNotCorrectErrorMessage);
         }
     }
 }

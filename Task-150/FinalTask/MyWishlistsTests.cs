@@ -13,6 +13,8 @@ namespace FinalTask
     {
         private const string printedChiffonDress = "Printed Chiffon Dress";
         private const string fadedShortSleeveTshirts = "Faded Short Sleeve T-shirts";
+        private const string productsCountErrorMessage = "The My Wishlist products count is different then expected";
+        private const string productNotAvailableErrorMessage = "The product is not in My Wishlist";
 
         public MyWishlistsTests(BrowserType browser, string version, string os) : base(browser, version, os)
         {
@@ -38,8 +40,8 @@ namespace FinalTask
             myAccountPage.ClickMyWishlistLink();
             myWishlistsPage.ClickViewMyWishlistLink();
 
-            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count);
-            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(printedChiffonDress));
+            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count, productsCountErrorMessage);
+            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(printedChiffonDress), productNotAvailableErrorMessage);
 
             myWishlistsPage.DeleteWishlist();
             myWishlistsPage.ClickSignOutButton();
@@ -64,8 +66,8 @@ namespace FinalTask
             myAccountPage.ClickMyWishlistLink();
             myWishlistsPage.ClickViewMyWishlistLink();
 
-            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count);
-            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(fadedShortSleeveTshirts));
+            Assert.AreEqual(1, myWishlistsPage.MyWishlistsProducts.Count, productsCountErrorMessage);
+            Assert.IsTrue(myWishlistsPage.IsProductInMyWishlists(fadedShortSleeveTshirts), productNotAvailableErrorMessage);
 
             myWishlistsPage.DeleteWishlist();
             myWishlistsPage.ClickSignOutButton();

@@ -13,6 +13,7 @@ namespace FinalTask
     {
         private const string expectedMyAccountPageTitle = "My account - My Store";
         private const string accountNotCreatedErrorMessage = "The account is not created";
+        private const string pageTitleNotExpectedErrorMessage = "The Page title is different then expected";
 
         public LoginTests(BrowserType browser, string version, string os) : base(browser, version, os)
         {
@@ -50,7 +51,7 @@ namespace FinalTask
             authenticationPage.NavigateToAuthenticationPage();
             authenticationPage.LoginWithTestAccount();
 
-            Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title);
+            Assert.AreEqual(expectedMyAccountPageTitle, Driver.Title, pageTitleNotExpectedErrorMessage);
             myWishlistsPage.ClickSignOutButton();
         }
     }
